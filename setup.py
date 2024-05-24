@@ -3,7 +3,7 @@ from setuptools import setup
 
 SHORT_DESC = 'Limitloop is a lightweight python module for running loops that depend on precise timing.'
 
-with open('README', 'r') as readme_file:
+with open('README.md', 'r') as readme_file:
     readme_contents = readme_file.read()
 
 setup(
