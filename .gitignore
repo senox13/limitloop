@@ -1,2 +1,12 @@
+#Python cache files
 __pycache__/*
 *.pyc
+
+#Setup-related files
+dist/
+MANIFEST
+*.egg-info
+
+#Test-related files
+.tox/
+.coverage

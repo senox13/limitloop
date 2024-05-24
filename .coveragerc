@@ -2,7 +2,7 @@
 branch = True
 omit =
     */__init__.py
-    limitloopTests.py
+    */limitloopTests.py
 
 [report]
 show_missing = True
