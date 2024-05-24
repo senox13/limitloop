@@ -43,6 +43,9 @@ class Loop(object):
         while self._running:
             self._currentFrameStartTime = perf_counter()
             self._lastReturn = self._function(self, *self._args, **self._kwargs)
+            if not self.saveArgs:
+                self._args = []
+                self._kwargs = {}
             iteration += 1
             if iteration >= maxIterations and maxIterations > 0:
                 self.end()
@@ -64,7 +67,7 @@ class Loop(object):
         return 1/self._frequency
     
     def framesPerSecond(self):
-        return 1/self._lastFrameTime if self._lastFrameTime != 0 else 0
+        return min(self._frequency, 1/self._lastFrameTime if self._lastFrameTime != 0 else 0)
     
     def setArgs(self, *args, **kwargs):
         self._args = args
