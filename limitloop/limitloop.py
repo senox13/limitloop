@@ -2,6 +2,9 @@ from time import perf_counter, sleep
 import math, threading
 
 class Loop(object):
+    #TODO: Add a `Loop.initialFrame` property
+    #TODO: Make constructor for Loop check if the method it's being passed contains a *kwarg* for the loop
+    #TODO: Add a constructor arg to pass loop object through kwargs with non-standard name
     def __init__(self, func, freq=30, saveArgs=False):
         self._running = False
         self._function = func

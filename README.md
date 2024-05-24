@@ -34,5 +34,3 @@ Hello, world!
 Hello, world!
 ```
 See the [API reference](api_reference.md) for more advanced usage.
-
-*TODO: Add more advanced usage examples*

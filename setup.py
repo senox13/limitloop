@@ -8,10 +8,10 @@ with open('README.md', 'r') as readme_file:
 
 setup(
     name='limitloop',
-    version=0.1,
+    version=0.2,
     author='Alex Medeiros',
-    author_email='alex.daniel.medeiros@gmail.com',
-    url='https://github.com/Alex-Medeiros/limitloop',
+    author_email='senox13@gmail.com',
+    url='https://github.com/senox13/limitloop',
     description=SHORT_DESC,
     long_description=readme_contents,
     long_description_content_type='text/markdown',

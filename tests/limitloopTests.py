@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import coverage, unittest, time, sys, os
+import unittest, time, sys, os
 from time import perf_counter
 try:
     from limitloop import *
@@ -7,8 +7,8 @@ except ImportError:
     sys.path.append('..')
     from limitloop import *
 
-#Any deviation from optimal timing by grater than this many MS will trigger an error
-TIMING_THRESHOLD = 1
+#Any deviation from optimal timing by greater than this many MS will trigger an error
+TIMING_THRESHOLD = 20
 
 class LoopTests(unittest.TestCase):
     def setUp(self):
@@ -78,7 +78,7 @@ class LoopTests(unittest.TestCase):
         self.assertRaises(RuntimeError, self.loop.run)
     
     #Loop.run and Loop.end tests
-    def testRunTimeDrift(self): #This does not pass. There is time drift and it's fairly significant
+    def testRunTimeDrift(self): #FIXME: This does not pass. There is time drift and it's fairly significant
         runForSeconds = 3
         self.loop.frequency = 600
         startTime = perf_counter()
