@@ -18,3 +18,7 @@ endloop():
 
 getfps():
     Return the semi-instantaneous FPS as defined by 1 divided by the time the last frame took
+
+def frame_time_remaining():
+    Return the time in seconds left in this frame to maintain framerate, as a float
+

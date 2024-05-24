@@ -1,5 +1,5 @@
 from time import perf_counter, sleep
-import math
+import math, threading
 
 """
 limitloop.py is a simple module for running loops that need to be run at a
@@ -14,6 +14,8 @@ DEFAULT_FPS_LIMIT = 30 #Equivalent to hz
 #Module vars
 _running = False
 _fps = 0
+_fps_limit = DEFAULT_FPS_LIMIT
+_frame_start_time = 0
 
 def limitloop(function, fps_limit=DEFAULT_FPS_LIMIT, *args, **kwargs):
     """
@@ -27,13 +29,16 @@ def limitloop(function, fps_limit=DEFAULT_FPS_LIMIT, *args, **kwargs):
     """
     global _running
     global _fps
+    global _frame_start_time
+    global _fps_limit
     _running = True
+    _fps_limit = fps_limit
     target_frame_time = 1/fps_limit
     retval = None
     while _running: #Main loop
-        start_time = perf_counter() #Get start time
+        _frame_start_time = perf_counter() #Get start time
         retval = function(*args, **kwargs) #Call function and save returned value
-        time_taken = perf_counter() - start_time #Find time elapsed
+        time_taken = perf_counter() - _frame_start_time #Find time elapsed
         _fps = min(1/time_taken, fps_limit) #Calculate FPS based on how long this frame took
         if(time_taken < target_frame_time): #If no sleep is needed, just continue
             sleep(target_frame_time - time_taken) #Sleep for remaining time
@@ -48,3 +53,14 @@ def getfps():
     """Return the semi-instantaneous FPS as defined by 1 divided by the time the last frame took"""
     global _fps
     return _fps
+
+def frame_time_remaining():
+    """Return the time in seconds left in this frame to maintain framerate, as a float"""
+    global _frame_start_time
+    global _fps_limit
+    curr_time = perf_counter()
+    time_taken = curr_time - _frame_start_time
+    target_frame_time = 1/_fps_limit
+    remaining = target_frame_time - time_taken
+    return remaining
+
