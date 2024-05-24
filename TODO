@@ -1,0 +1,5 @@
+# TODO
+* Make constructor for Loop check if the method it's being passed contains a *kwarg* for the loop
+This should probaly be used: https://docs.python.org/3/library/inspect.html#inspect.signature
+* Add a constructor arg to pass loop object through kwarg with non-standard name
+
