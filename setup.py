@@ -7,7 +7,7 @@ with open('README.md', 'r') as readme_file:
     readme_contents = readme_file.read()
 
 setup(
-    name='Limitloop',
+    name='limitloop',
     version=0.1,
     author='Alex Medeiros',
     author_email='alex.daniel.medeiros@gmail.com',

@@ -1,5 +1,13 @@
 # __Limitloop__
 
+Limitloop is a lightweight python module for running loops that depend on precise timing.
+
+This package is available through Pypi and can be installed with the following command.
+
+```sh
+python -m pip install limitloop
+```
+
 ## Basic usage
 
 All functionality of the module is provided through the `limitloop.Loop` class. This class is instantiated with a reference to a function, which it can then call at a consistent rate a preset number of times, or until otherwise interrupted. For example, the following code...
