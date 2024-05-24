@@ -1,0 +1,10 @@
+[run]
+branch = True
+omit =
+    */__init__.py
+    limitloopTests.py
+
+[report]
+show_missing = True
+#skip_covered = True
+
